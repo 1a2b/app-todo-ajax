@@ -2,7 +2,12 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
+  resources :lists
+
   resources :users
+
+  resources :tasks
+    patch 'done_tasks/:id' => 'tasks#done', as: 'task_done'
  
   resources :sessions, only: [:new, :create, :destroy]
 
